@@ -1,0 +1,39 @@
+html {
+    height: 100%;
+}
+
+body {
+    color: #555;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+/*......................... Media Queries */
+
+    /* Slighly larger container on extra large screens */
+
+    @media (min-width: 1200px){
+        .container {
+            max-width: 80%;
+        }
+    
+    /* Fixed top nav bar on medium and larger screens and up */
+
+    @media (min-width: 992px) {
+        .fixed-top-desktop-only {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+        }
+    }
+
+    }
