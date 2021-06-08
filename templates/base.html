@@ -15,7 +15,7 @@
         {% block corecss %}
             <link rel="preconnect" href="https://fonts.gstatic.com">
             <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@200;300;400;500&display=swap">
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
             <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
         {% endblock %}
 
@@ -25,9 +25,8 @@
         {% block corejs %}
             <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            <script src="https://kit.fontawesome.com/8cde22fd9a.js" crossorigin="anonymous"></script>    
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+            <script src="https://kit.fontawesome.com/8cde22fd9a.js" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script> 
         {% endblock %}
 
         {% block extra_js %}
@@ -39,13 +38,13 @@
         <header class="container-fluid fixed-top">
             <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
                 <!-- Logo and home page link -->
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
+                <div class="col-12 col-lg-3 my-auto py-1 py-lg-0 text-center text-lg-left">
                     <a href="{% url 'home' %}" class="nav-link main-logo-link">
                         <h2 class="logo-font my-0">crwst</h2>
                     </a>
                 </div>
                 <!-- Search form -->
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <div class="col-12 col-lg-3 my-auto py-1 py-lg-0">
                     <form method="GET" action="">
                         <div class="input-group w-100">
                             <input class="form-control border rounded-0" type="text" name="q" placeholder="Search products">
@@ -59,8 +58,18 @@
                         </div>
                     </form>
                 </div>
+                <!-- Menu -->
+                <div class="col-12 col-lg-3 my-auto py-1 py-lg-0">
+                    <nav class="navbar navbar-expand-lg">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        {% include 'includes/mobile-top-header.html' %}
+                        {% include 'includes/main-nav.html' %}
+                    </nav>
+                </div>
                 <!-- Account and shopping cart -->
-                <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+                <div class="col-12 col-lg-3 my-auto py-1 py-lg-0">
                     <ul class="list-inline list-unstyled text-center text-lg-right my-0">
                         <li class="list-inline-item dropdown">
                             <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -102,7 +111,7 @@
         </header>
 
         {% if messages %}
-        <div class="message-container"></div>
+            <div class="message-container"></div>
         {% endif %}
 
         {% block page_header %}
