@@ -3,7 +3,7 @@
     <li class="list-inline-item">
       <a class="nav-link d-block d-lg-none" href="#" id="mobile-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <div class="text-center">
-              <span><i class="icon fas fa-search fa-lg"></i></span>
+              <span class="icon"><i class="fas fa-search fa-lg"></i></span>
               <p class="my-0">Search</p>
           </div>
       </a>
@@ -45,9 +45,9 @@
     </li>
     <!-- Shopping cart -->
     <li class="list-inline-item">
-        <a class="{% if grand_total %}text-primary font-weight-bold{% else %}text-black{% endif %} nav-link d-block d-lg-none" href="">
+        <a class="{% if grand_total %}text-primary font-weight-bold{% else %}{% endif %} nav-link d-block d-lg-none" href="">
             <div class="text-center">
-                <div class="icon"><i class="fas fa-shopping-bag fa-lg"></i></div>
+                <div class="icon"><i class="fas fa-shopping-cart fa-lg"></i></div>
                 <p class="my-0">
                     {% if grand_total %}
                         ${{ grand_total|floatformat:2 }}

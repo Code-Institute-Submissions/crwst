@@ -12,6 +12,16 @@ body {
     width: fit-content;
 }
 
+.nav-link {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
 /* take from Bulma to keep icons consistent */
 .icon {
     align-items: center;
@@ -51,6 +61,11 @@ body {
 
         .icon {
             width: 1.5rem;
+        }
+
+        .nav-link {
+            padding: .5rem 1rem;
+            font-size: inherit;
         }
 
 
