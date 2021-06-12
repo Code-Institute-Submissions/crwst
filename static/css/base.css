@@ -5,28 +5,38 @@ html {
 body {
     color: #555;
     font-family: 'Roboto Mono', monospace;
-}
-
-.logo-font {
-    text-transform: uppercase;
+    height: calc(100vh - 164px);
 }
 
 .main-logo-link {
     width: fit-content;
 }
 
+/* take from Bulma to keep icons consistent */
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: 1.5rem;
+    width: 0.75rem;
+}
+
 /*......................... Media Queries */
 
     /* Slighly larger container on extra large screens */
 
-    @media (min-width: 1200px){
+    @media (min-width: 1200px) {
+
         .container {
             max-width: 80%;
         }
+
+    }
     
     /* Fixed top nav bar on medium and larger screens and up */
 
     @media (min-width: 992px) {
+
         .fixed-top-desktop-only {
             position: fixed;
             top: 0;
@@ -34,6 +44,15 @@ body {
             left: 0;
             z-index: 1000;
         }
-    }
+
+        .header-container {
+            padding-top: 164px;
+        }
+
+        .icon {
+            width: 1.5rem;
+        }
+
 
     }
+
