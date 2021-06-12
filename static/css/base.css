@@ -8,6 +8,8 @@ body {
     height: calc(100vh - 164px);
 }
 
+/*............................. Navigation */
+
 .main-logo-link {
     width: fit-content;
 }
@@ -21,6 +23,20 @@ ul {
     margin: 0;
     padding: 0;
 }
+
+/*............................. Products */
+
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+
+}
+
 
 /* take from Bulma to keep icons consistent */
 .icon {
