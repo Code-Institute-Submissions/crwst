@@ -45,7 +45,7 @@
     </li>
     <!-- Shopping cart -->
     <li class="list-inline-item">
-        <a class="{% if grand_total %}text-primary font-weight-bold{% else %}{% endif %} nav-link d-block d-lg-none" href="">
+        <a class="{% if grand_total %}text-primary font-weight-bold{% else %}{% endif %} nav-link d-block d-lg-none" href="{% url 'view_bag' %}">
             <div class="text-center">
                 <div class="icon"><i class="fas fa-shopping-cart fa-lg"></i></div>
                 <p class="my-0">
