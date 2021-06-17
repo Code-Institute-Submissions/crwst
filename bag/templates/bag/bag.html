@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load bag_tools %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -51,7 +52,7 @@
                                     </td>
                                     <td class="p-3 w-25">
                                         <!-- Quantity toggles -->
-                                        <form class="form update-form" action="" method="POST">
+                                        <form class="form update-form" action="{% url 'adjust_bag' item.item_id %}" method="POST">
                                             {% csrf_token %}
                                             <div class="form-group">
                                                 <div class="input-group">
@@ -78,11 +79,12 @@
                                             </div>
                                         </form>
                                         <!-- Quantity update submit options -->
-                                        <a href="" class="update-link text-info"><small>Update</small></a>
-                                        <a href="" class="remove-item text-danger float-right" id="{{ item.item_id }}"><small>Remove</small></a>
+                                        <a class="update-link text-info"><small>Update</small></a>
+                                        <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                     </td>
+                                    <!-- Subtotal -->
                                     <td class="p-3">
-                                        <p class="my-0">£{{ item.product.price }}</p>
+                                        <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -146,14 +148,14 @@
 
     // Remove product and reload on click
     $('.remove-item').click(function(e) {
-        var csrfToken = "{{ crsf_token }}";
+        var csrfToken = "{{ csrf_token }}";
         var itemId = $(this).attr('id').split('remove_')[1];
-        var url = `/bag/remove/${itemId}`;
-        var data = {'crsfmiddlewaretoken': crsfToken};
+        var url = `/bag/remove/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
 
         $.post(url, data)
          .done(function() {
-             location.reload();
+            location.reload();
          });
 
     })
