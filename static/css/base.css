@@ -46,7 +46,9 @@ ul {
     color: #555;
 }
 
-.btt-link {
+.btt-link,
+.update-link,
+.remove-item {
     cursor: pointer;
 }
 
