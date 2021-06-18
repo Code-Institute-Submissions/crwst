@@ -175,7 +175,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 FREE_DELIVERY_THRESHOLD = 30
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-# Stripe variables 
+# Stripe variables
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 
 
