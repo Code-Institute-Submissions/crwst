@@ -28,6 +28,7 @@
 #payment-form, .form-control,
 #card-element {
     border: 1px solid #555;
+    color: #555;
 }
 
 .fieldset-label {

@@ -22,11 +22,13 @@ var style = {
       }
     },
     invalid: {
-      fontFamily: 'Arial, sans-serif',
+      fontFamily: 'Roboto Mono, monospace',
+      fontSmoothing: "antialiased",
+      fontSize: "16px",
       color: "#dc5345",
       iconColor: "#dc5345"
     }
-  };
+};
 
 var card = elements.create('card', {style: style});
 
