@@ -34,7 +34,7 @@ def checkout(request):
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
-            order=order_form.save()
+            order = order_form.save()
             for item_id, item_data in bag.items():
                 try:
                     product = Product.objects.get(id=item_id)
@@ -107,10 +107,10 @@ def checkout_success(request, order_number):
     messages.success(request, f'Order successfully processed. \
         Your order number is {order_number}. A confirmation \
             email will be sent to {order.email}.')
-    
+
     if 'bag' in request.session:
         del request.session['bag']
-    
+
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
