@@ -123,7 +123,7 @@ def checkout(request):
                 })
             except UserProfile.DoesNotExist:
                 order_form: OrderForm()
-        
+
         else:
             order_form = OrderForm()
 
