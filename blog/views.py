@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import Blog, Comment
 from .forms import SearchForm, CommentForm, BlogForm
 from django.contrib.auth.decorators import login_required
@@ -53,7 +53,17 @@ def BlogDetailView(request, _id):
 @login_required
 def add_blog(request):
     """ Add a blog to the site """
-    form = BlogForm()
+    if request.method == 'POST':
+        form = BlogForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully added blog!')
+            return redirect(reverse('add_blog'))
+        else:
+            messages.error(request, 'Failed to add blog. Please ensure form is valid.')
+    else:
+        form = BlogForm()
+
     template = 'blog/add_blog.html'
     context = {
         'form': form,
