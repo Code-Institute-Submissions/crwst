@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from .models import Blog, Comment
 from .forms import SearchForm, CommentForm, BlogForm
 from django.contrib.auth.decorators import login_required
@@ -67,6 +67,31 @@ def add_blog(request):
     template = 'blog/add_blog.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_blog(request, _id):
+    """ Edit blog on the site """
+    blog = get_object_or_404(Blog, pk=_id)
+    if request.method == 'POST':
+        form = BlogForm(request.POST, instance=blog)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated blog!')
+            return redirect(reverse('BlogDetailView', args=[blog.id]))
+        else:
+            messages.error(request, 'Failed to update blog. Please ensure form is valid.')
+    else:
+        form = BlogForm(instance=blog)
+        messages.info(request, f'You are editing blog {blog.blog_title}')
+
+    template = 'blog/edit_blog.html'
+    context = {
+        'form': form,
+        'blog': blog,
     }
 
     return render(request, template, context)
