@@ -53,6 +53,10 @@ def BlogDetailView(request, blog_id):
 @login_required
 def add_blog(request):
     """ Add a blog to the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     if request.method == "POST":
         form = BlogForm(request.POST)
         if form.is_valid():
@@ -75,6 +79,10 @@ def add_blog(request):
 @login_required
 def edit_blog(request, blog_id):
     """ Edit blog on the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     blog = get_object_or_404(Blog, pk=blog_id)
     if request.method == "POST":
         form = BlogForm(request.POST, instance=blog)
@@ -100,6 +108,10 @@ def edit_blog(request, blog_id):
 @login_required
 def delete_blog():
     """ Delete a blog from the site """
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
     blog = get_object_or_404(Blog, pk=blog_id)
     blog.delete()
     messages.success(request, 'Blog deleted!')
