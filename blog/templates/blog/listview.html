@@ -11,6 +11,12 @@
 
     {% for data in dataset %}
         <h3>{{data.blog_title}}</h3>
+            {% if request.user.is_superuser %}
+                <small class="ml-3">
+                    <a href="{% url 'edit_blog' blog.id %}">Edit</a> | 
+                    <a class="text-danger" href="{% url 'delete_blog' blog.id %}" onclick="return confirm('Are you sure you want to delete this blog post?');">Delete</a>
+                </small>
+            {% endif %}
             <a href = "{% url 'blog' _id=data.id %}">Read More</a>
         <hr/>
     {% endfor %}

@@ -7,7 +7,7 @@ from django.contrib import messages
 
 def BlogListView(request):
     dataset = Blog.objects.all()
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SearchForm(request.POST)
         if form.is_valid():
             title = form.cleaned_data['title']
@@ -23,14 +23,14 @@ def BlogListView(request):
 
 
 @login_required
-def BlogDetailView(request, _id):
+def BlogDetailView(request, blog_id):
     try:
-        data = Blog.objects.get(id=_id)
+        data = Blog.objects.get(id=blog_id)
         comments = Comment.objects.filter(blog=data)
     except Blog.DoesNotExist:
         raise Http404('Data does not exist')
 
-    if request.method == 'POST':
+    if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             Comment = Comment(author=form.cleaned_data['author'],
@@ -53,12 +53,12 @@ def BlogDetailView(request, _id):
 @login_required
 def add_blog(request):
     """ Add a blog to the site """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = BlogForm(request.POST)
         if form.is_valid():
-            form.save()
+            blog = form.save()
             messages.success(request, 'Successfully added blog!')
-            return redirect(reverse('add_blog'))
+            return redirect(reverse('blog', args=[blog.id]))
         else:
             messages.error(request, 'Failed to add blog. Please ensure form is valid.')
     else:
@@ -73,15 +73,15 @@ def add_blog(request):
 
 
 @login_required
-def edit_blog(request, _id):
+def edit_blog(request, blog_id):
     """ Edit blog on the site """
-    blog = get_object_or_404(Blog, pk=_id)
-    if request.method == 'POST':
+    blog = get_object_or_404(Blog, pk=blog_id)
+    if request.method == "POST":
         form = BlogForm(request.POST, instance=blog)
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated blog!')
-            return redirect(reverse('BlogDetailView', args=[blog.id]))
+            return redirect(reverse('blog', args=[blog.id]))
         else:
             messages.error(request, 'Failed to update blog. Please ensure form is valid.')
     else:
@@ -95,3 +95,12 @@ def edit_blog(request, _id):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_blog():
+    """ Delete a blog from the site """
+    blog = get_object_or_404(Blog, pk=blog_id)
+    blog.delete()
+    messages.success(request, 'Blog deleted!')
+    return redirect(reverse('blogs'))
