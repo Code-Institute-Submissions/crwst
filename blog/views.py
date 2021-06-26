@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Blog, Comment
-from .forms import SearchForm, CommentForm
+from .forms import SearchForm, CommentForm, BlogForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -19,11 +19,11 @@ def BlogListView(request):
             'dataset': dataset,
             'form': form,
         }
-    return render(request,'blog/listview.html', context)
+    return render(request, 'blog/listview.html', context)
 
 
 @login_required
-def BlogDetailView(request,_id):
+def BlogDetailView(request, _id):
     try:
         data = Blog.objects.get(id=_id)
         comments = Comment.objects.filter(blog=data)
@@ -39,9 +39,6 @@ def BlogDetailView(request,_id):
             Comment.save()
             messages.success(request, 'Successfully added comment!')
             return redirect(f'/blog/{_id}')
-        else:
-            messages.error(request, 'Please ensure the details are valid.')
-            return redirect(f'/blog/{_id}')
     else:
         form = CommentForm()
 
@@ -50,4 +47,16 @@ def BlogDetailView(request,_id):
             'form': form,
             'comments': comments,
         }
-    return render(request,'blog/detailview.html', context)
+    return render(request, 'blog/detailview.html', context)
+
+
+@login_required
+def add_blog(request):
+    """ Add a blog to the site """
+    form = BlogForm()
+    template = 'blog/add_blog.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
