@@ -99,6 +99,26 @@
                 </div>
             </div>
         </div>
+        <!-- Reviews and comments -->
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                {% if user.is_authenticated %}
+                    <form method="post">
+                        {%csrf_token %}
+                            <H2>Review Here</H2>
+                        {{form.as_p}}
+                        <input type ="submit" value="reviews">
+                    </form>
+                {% endif %}
+
+                {% for review in reviews %}
+                <p><strong>{{review.review_rating}}</strong></p>
+                <p><strong>{{review.review_title}}</strong></p>
+                <p>{{review.review_text}}</p>
+                <p><em>{{review.review_author}} - {{review.review_created}}:</em></p>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
