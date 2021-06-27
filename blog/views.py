@@ -12,7 +12,7 @@ def BlogListView(request):
         if form.is_valid():
             title = form.cleaned_data['title']
             blog = Blog.objects.get(blog_title=title)
-            return redirect(f'/blog/{blog.id}')
+            return redirect(f'blogs')
     else:
         form = SearchForm()
         context = {
@@ -22,23 +22,25 @@ def BlogListView(request):
     return render(request, 'blog/listview.html', context)
 
 
-@login_required
-def BlogDetailView(request, blog_id):
+def BlogDetailView(request, _id):
     try:
-        data = Blog.objects.get(id=blog_id)
-        comments = Comment.objects.filter(blog=data)
+        data =Blog.objects.get(id =_id)
+        comments = Comment.objects.filter(blog = data)
     except Blog.DoesNotExist:
         raise Http404('Data does not exist')
 
     if request.method == "POST":
         form = CommentForm(request.POST)
+        if not request.user:
+            messages.error(request, 'Sorry, only registered shoppers can do that.')
+            return redirect(reverse('blogs'))
         if form.is_valid():
-            Comment = Comment(author=form.cleaned_data['author'],
+            comment_variable = Comment(author=request.user,
                 comment_text=form.cleaned_data['comment_text'],
                 blog=data)
-            Comment.save()
+            comment_variable.save()
             messages.success(request, 'Successfully added comment!')
-            return redirect(f'/blog/{_id}')
+            return redirect(f'/blogs/blog/{_id}/')
     else:
         form = CommentForm()
 
@@ -77,13 +79,13 @@ def add_blog(request):
 
 
 @login_required
-def edit_blog(request, blog_id):
+def edit_blog(request, _id):
     """ Edit blog on the site """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    blog = get_object_or_404(Blog, pk=blog_id)
+    blog = get_object_or_404(Blog, pk=_id)
     if request.method == "POST":
         form = BlogForm(request.POST, instance=blog)
         if form.is_valid():
@@ -106,13 +108,13 @@ def edit_blog(request, blog_id):
 
 
 @login_required
-def delete_blog():
+def delete_blog(request, _id):
     """ Delete a blog from the site """
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    blog = get_object_or_404(Blog, pk=blog_id)
+    blog = get_object_or_404(Blog, pk=_id)
     blog.delete()
     messages.success(request, 'Blog deleted!')
     return redirect(reverse('blogs'))

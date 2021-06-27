@@ -5,8 +5,6 @@ from django.db import models
 
 
 class CommentForm(forms.Form):
-    author = models.ForeignKey(User, on_delete=models.CASCADE,
-             related_name="comments")
     comment_text = forms.CharField(widget=forms.Textarea)
 
     def __str__(self):
