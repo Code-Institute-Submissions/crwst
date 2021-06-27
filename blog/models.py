@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 
 class Blog(models.Model):
-    id = models.IntegerField(primary_key=True)
     blog_title = models.CharField(max_length=20)
     blog = models.TextField()
 
