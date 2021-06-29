@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_title %}
+- Blog {{data.blog_title}}
+{% endblock %}
+
 {% block content %}
     <h3>Title:</h3><p>{{data.blog_title}}</p><br>
     <h3>Blog</h3>
