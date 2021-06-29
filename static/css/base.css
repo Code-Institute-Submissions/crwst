@@ -24,6 +24,23 @@ ul {
     padding: 0;
 }
 
+
+/*............................. Buttons */
+
+/* Primary call to action */
+.btn-style {
+    background: rgb(21, 21, 21);
+    color: white;
+}
+
+/* Secondary call to action */
+.btn-outline {
+    background: white;
+    color: 555 !important; /* use important to override link colors for <a> elements */
+    border: 1px solid rgb(21, 21, 21);
+}
+
+
 /*............................. Products */
 
 .overlay {
