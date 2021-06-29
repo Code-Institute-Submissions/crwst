@@ -23,6 +23,9 @@
         <input type ="submit" value="Comment">
     </form>
     {% endif %}
+    {% if not user.is_authenticated %}
+        <p>To post a comment please <a href="{% url 'account_login' %}">log in or sign up.</a></p>
+    {% endif %}
 
     {% for comment in comments %}
         <p><strong>{{comment.author}} - {{comment.created}}:</strong> {{comment.comment_text}}</p>
