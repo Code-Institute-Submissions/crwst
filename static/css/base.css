@@ -3,9 +3,24 @@ html {
 }
 
 body {
+    background: url('/media/homecookie.jpg') no-repeat center center fixed;
+    background-size: cover;
     color: #555;
     font-family: 'Roboto Mono', monospace;
     height: calc(100vh - 164px);
+}
+
+#delivery-banner {
+    background-color: rgb(220, 220, 220);;
+}
+
+#delivery-banner a {
+    color: #555;
+    text-decoration: none;
+}
+
+#delivery-banner h4 {
+    font-size: 1rem;
 }
 
 /*............................. Navigation */
@@ -39,6 +54,8 @@ ul {
     color: 555 !important; /* use important to override link colors for <a> elements */
     border: 1px solid rgb(21, 21, 21);
 }
+
+
 
 
 /*............................. Products */
