@@ -31,6 +31,10 @@
     color: #555;
 }
 
+#payment-form {
+  border: #fff;
+}
+
 select, 
 select option {
   color: #555;
