@@ -33,12 +33,17 @@
     <!-- Blog links -->
     <div class="row">
         <div class="col-10 product-container offset-1">
+            <!-- Blog and search result count -->
             <div class="col-12 my-3">
                 {% if search_term != None %}
                     <span><a href="{% url 'blogs' %}">All Blogs</a> | </span>
                 {% endif %}
                 {{ dataset|length }} Blog(s){% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+                {% if request.user.is_superuser %}
+                    <a href="{% url 'add_blog' %}" class="btn btn-style">Add a blog</a>
+                {% endif %}
             </div>
+            <!-- Blog post cards -->
             {% if dataset|length > 0 %}
                 <div class="row">
                 {% for data in dataset %}
