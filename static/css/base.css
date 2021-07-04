@@ -85,6 +85,20 @@ ul {
     cursor: pointer;
 }
 
+/* Zoom In on product hover */
+.zoomIn img {
+    -webkit-transform: scale(90%);
+    transform: scale(90%);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.zoomIn:hover img {
+    -webkit-transform: scale(100%);
+    transform: scale(100%);
+}
+
+
 input[name='q']::placeholder {
     color: #aab7c4;
 }
