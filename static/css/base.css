@@ -23,6 +23,17 @@ body {
     font-size: 1rem;
 }
 
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: white;
+    z-index: -1;
+
+}
+
 /*............................. Navigation */
 
 .main-logo-link {
@@ -57,19 +68,7 @@ ul {
 
 
 
-
 /*............................. Products */
-
-.overlay {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    position: fixed;
-    background: white;
-    z-index: -1;
-
-}
 
 .btt-button {
     height: 42px;
@@ -122,6 +121,16 @@ input[name='q']::placeholder {
 
 .allauth-form-inner-content a {
 	color: #17a2b8; /* text-info */
+}
+
+.products .card-img-top {
+    object-fit: cover;
+    height: 250px;
+}
+
+.productDetail .card-img-top {
+    object-fit: cover;
+    max-height: 400px;
 }
 
 
