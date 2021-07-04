@@ -3,20 +3,26 @@ from .models import Blog, Comment
 from .forms import SearchForm, CommentForm, BlogForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db.models import Q
 
 
 def BlogListView(request):
     dataset = Blog.objects.all()
-    if request.method == "POST":
-        form = SearchForm(request.POST)
-        if form.is_valid():
-            title = form.cleaned_data['title']
-            blog = Blog.objects.get(blog_title=title)
-            return redirect(f'blogs')
-    else:
-        form = SearchForm()
-        context = {
+    query = None
+    form = SearchForm()
+    if request.GET:
+        if 'title' in request.GET:
+            query = request.GET['title']
+            if not query:
+                messages.error(request, "You didn't enter any search criteria!")
+                return redirect(reverse('blogs'))
+
+            queries = Q(blog_title__icontains=query) | Q(blog__icontains=query)
+            dataset = dataset.filter(queries)
+
+    context = {
             'dataset': dataset,
+            'search_term': query,
             'form': form,
         }
     return render(request, 'blog/listview.html', context)

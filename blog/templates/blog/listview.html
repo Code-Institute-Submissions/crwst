@@ -21,7 +21,7 @@
     <!-- Blog search form -->
     <div class="row">
         <div class="col text-center mt-3 my-4">
-            <form method="post">
+            <form method="GET" action="{% url 'blogs' %}">
                 {%csrf_token %}
                 <h2 class="my-3">Search Blog Posts</h2>
                 {{form.as_p}}
@@ -33,6 +33,12 @@
     <!-- Blog links -->
     <div class="row">
         <div class="col-10 product-container offset-1">
+            <div class="col-12 my-3">
+                {% if search_term != None %}
+                    <span><a href="{% url 'blogs' %}">All Blogs</a> | </span>
+                {% endif %}
+                {{ dataset|length }} Blog(s){% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
+            </div>
             {% if dataset|length > 0 %}
                 <div class="row">
                 {% for data in dataset %}
