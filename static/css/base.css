@@ -11,7 +11,7 @@ body {
 }
 
 #delivery-banner {
-    background-color: rgb(220, 220, 220);;
+    background-color: rgb(220, 220, 220);
 }
 
 #delivery-banner a {
@@ -209,6 +209,28 @@ input[name='q']::placeholder {
     border-radius: 0;
 }
 
+/*.................................. Footer  */
+
+footer {
+    background-color: rgb(220, 220, 220);
+    color: inherit;
+    font-family: 'Roboto Mono', monospace;
+}
+
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+
+footer a span {
+    font-family: 'Roboto Mono', monospace;
+}
+
+footer a:hover { 
+    color: rgb(0, 0, 0);
+    font-weight: 100;
+    text-decoration: none;
+}
 
 /*............................ Media Queries */
 
