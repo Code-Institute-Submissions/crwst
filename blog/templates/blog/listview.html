@@ -18,21 +18,32 @@
 {% block content %}
 <div class="overlay"></div>
 <div class="container-fluid">
-    <!-- Blog search form -->
+    <!-- Page Title -->
     <div class="row">
         <div class="col text-center mt-3 my-4">
-            <form method="GET" action="{% url 'blogs' %}">
-                {%csrf_token %}
-                <h2 class="my-3">Search Blog Posts</h2>
-                {{form.as_p}}
-                <input type ="submit" value="Search" class="btn btn-style rounded-0">
-            </form>
+            <h2>Crwst Blog</h2>
             <hr class="w-50 mt-3 mb-3">
         </div>
     </div>
-    <!-- Blog links -->
+    <!-- Blog search and cards -->
     <div class="row">
         <div class="col-10 product-container offset-1">
+            <!-- Blog search form -->
+            <div class="mb-5">
+                <form method="GET" action="{% url 'blogs' %}">
+                    <div class="input-group col-sm-12 col-md-6 col-lg-4">
+                        <input class="form-control border rounded-0" type="text" name="title" placeholder="Search blogs">
+                        <div class="input-group-append">
+                            <button class="form-control btn border rounded-0" type="submit">
+                                <span class="icon">
+                                    <i class="fas fa-search"></i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
             <!-- Blog and search result count -->
             <div class="col-12 my-3">
                 {% if search_term != None %}
@@ -40,7 +51,7 @@
                 {% endif %}
                 {{ dataset|length }} Blog(s){% if search_term %} found for <strong>"{{ search_term }}"</strong>{% endif %}
                 {% if request.user.is_superuser %}
-                    <a href="{% url 'add_blog' %}" class="btn btn-style">Add a blog</a>
+                    <a href="{% url 'add_blog' %}" class="btn btn-style rounded-0">Add new blog</a>
                 {% endif %}
             </div>
             <!-- Blog post cards -->
