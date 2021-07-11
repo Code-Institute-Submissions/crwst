@@ -14,7 +14,7 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
-             related_name="comments")
+                               related_name="comments")
     comment_text = models.TextField()
     blog = models.ForeignKey('Blog', on_delete=models.CASCADE)
     created = models.DateTimeField(auto_now=True)
