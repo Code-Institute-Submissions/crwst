@@ -79,7 +79,7 @@ ul {
 /* Secondary call to action */
 .btn-outline {
     background: white;
-    color: 555 !important; /* use important to override link colors for <a> elements */
+    color: #555 !important; /* use important to override link colors for <a> elements */
     border: 1px solid#151515;
 }
 
