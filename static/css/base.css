@@ -11,7 +11,7 @@ body {
 }
 
 #delivery-banner .zoomIn {
-    background-color: rgb(220, 220, 220);
+    background-color: #dcdcdc;
     -webkit-transform: scale(100%);
     transform: scale(100%);
     -webkit-transition: .3s ease-in-out;
@@ -19,7 +19,7 @@ body {
 }
 
 #delivery-banner .zoomIn:hover {
-    background-color: rgb(220, 220, 220);
+    background-color: #dcdcdc;
     -webkit-transform: scale(110%);
     transform: scale(110%);
     font-weight: bold;
@@ -72,15 +72,15 @@ ul {
 
 /* Primary call to action */
 .btn-style {
-    background: rgb(21, 21, 21);
-    color: white;
+    background: #151515;
+    color: #fff;
 }
 
 /* Secondary call to action */
 .btn-outline {
     background: white;
     color: 555 !important; /* use important to override link colors for <a> elements */
-    border: 1px solid rgb(21, 21, 21);
+    border: 1px solid#151515;
 }
 
 
@@ -254,7 +254,7 @@ input[name='q']::placeholder {
 /*.................................. Footer  */
 
 footer {
-    background-color: rgb(220, 220, 220);
+    background-color: #dcdcdc;
     color: inherit;
     font-family: 'Roboto Mono', monospace;
 }
@@ -269,7 +269,7 @@ footer a span {
 }
 
 footer a:hover { 
-    color: rgb(0, 0, 0);
+    color:#000;
     font-weight: 100;
     text-decoration: none;
 }
