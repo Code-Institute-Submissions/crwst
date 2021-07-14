@@ -59,6 +59,10 @@ body {
     color: #555;
 }
 
+.nav-link:hover {
+    color: #000;
+}
+
 ul {
     margin: 0;
     padding: 0;
