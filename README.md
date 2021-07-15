@@ -70,7 +70,7 @@ Research from [Bakery Info](https://bakeryinfo.co.uk/bakery-market-report/bakery
 
 ### User and Site Owner Stories
 
-SCREENSHOT OF USER STORIES 
+![User and Site Owner Stories](readme/images/userstories/userstories.jpg)
 
 [Back to Contents](#contents)
 
@@ -404,7 +404,7 @@ There is a Bag App and a Home App however neither currently have the need for mo
 * Profiles App; User Profile Model
 * Blog App; Blog Model, Comments Model 
 
-DATA SCHEMA
+![Data Schema](readme/images/dataschema.png)
 
 [Back to Contents](#contents)
 
