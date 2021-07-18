@@ -545,7 +545,9 @@ Desktop:
 
 ### Accessibility Validation
 
-I tested the accessibility of the site using [Wave](https://wave.webaim.org/) which resulted in minimal errors. It did note that white text over the home page image wasn’t strong enough in contrast so this was changed.  
+I tested the accessibility of the site using [Wave](https://wave.webaim.org/) which noted that the white logo didn’t have a strong enough contrast against the homepage background. This was addressed and the logo changed to a darker colour and retested, resulting in it passing. 
+
+![Colour contrast test](readme/images/contrastlogo.JPG)
 
 ### Browser Validation
 

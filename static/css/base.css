@@ -290,6 +290,14 @@ footer a:hover {
 
 }
 
+/* Logo colour to ensure color is accessible on background Tablet and up */
+
+@media (min-width: 768px) {
+    .logo {
+        color: #151515;
+    }
+}
+
 /* Fixed top nav bar on medium and larger screens and up */
 
 @media (min-width: 992px) {
