@@ -435,7 +435,7 @@ Note that Stripe is test stage and not activated.
 
 Code was passed through the following: 
 
-[HTML](https://validator.w3.org/), [CSS](https://jigsaw.w3.org/css-validator/), [JavaScript and jQuery]( https://jshint.com/) and [Python](http://pep8online.com/) were checked with online validators to check for invalid code. 
+[HTML](https://validator.w3.org/), [CSS](https://jigsaw.w3.org/css-validator/), [JavaScript and jQuery]( https://jshint.com/) and [Python](http://pep8online.com/) were checked with online validators to check for invalid code. Chrome Dev Tool's lighthouse was used to determine overall performance level. 
 
 HTML:
 
@@ -521,6 +521,27 @@ All python files have been passed through the Validator and shown the following 
 | -----------------              | ---------------------------                   | ---- |
 
 When testing email, I tested in all auth using a test temporary link, that the user is directed too when email validation works. Once success confirmed this test was removed from the code. 
+
+Chrome Dev Tool’s Lighthouse:
+
+Both results showed that there were some unused CSS and JS files which the checker notes is from bootstrap and jQuery and the JavaScript used for Stripe, both side received a result in the 90’s for performance even with this however. 
+
+Whilst performance is good for both, the site’s SEO needs improving which it notes would occur if it had a meta description. This is something for a future release.
+
+The accessibility was not rated highly as icons and links such as the search icon and social media links do not have discernible names so that users that use screen readers can know what they are referring to. This was addressed. 
+
+It notes that the speed is restricted with the static files in aws s3 and that links to cross-origin destinations are unsafe. As suggested, `rel="noopener"` was added to external links to improve performance and prevent security vulnerabilities. 
+
+It is also flagging a duplicated label ID that might interfere with aria and it being overlooked by assistive technologies, however this ID is from bootstrap to ensure the functionality of the navigation, and the ID is duplicated because it is in both the base template and the mobile-top-header includes html file therefore in this instance is it okay. The links have been tested and they both function correctly.
+
+Mobile: 
+
+![Mobile Lighthouse](readme/images/mobilelighthouse.JPG)
+
+Desktop: 
+
+![Desktop Lighthouse](readme/images/desktoplighthouse.JPG)
+
 
 ### Accessibility Validation
 
