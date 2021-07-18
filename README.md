@@ -377,16 +377,17 @@ Success, information, warning and error messages are built into this project so 
 
 There are many features that I would like to implement in future releases: 
 
-* Images on blogs. This would add visual interest and give a better UI to this page.
-* Blog result storability
+* Have the ability to add images on blogs. This would add visual interest and give a better UI to this page.
+* Blog result sortability - it would enchange the UX to be able to sort blogs once there are many of them
 * A review model on products – it would be great UX if users can review products which that show an accurate total rating on products calculated by real customer reviews
 * Email subscription ability (for a real business that wanted to send email notifications)
 * Locations page – a page that showed the location of stockists for those that may not want to purchase online, or live near the bakery
 * A text input field on cart page so that any dietary requirements could be noted – would need a logically caveat for the business but it’s a potential feature
 * Adding further categories such as Vegetarian or Vegan would be important for users
-* Allow Super User to add categories
+* Allow Super User to add categories (this would require further development to ensure menu links were added to)
 * Add more accurate redirects links as they are not always linked for best UX – eg signing in to comment on a blog redirects to homepage 
 * Have the number of items in the cart appear in the cart icon as well as the total, as per ecommerce convention 
+* Allow shoppers to sign in and register their accounts with their social media accounts
 
 [Back to Contents](#contents)
 
