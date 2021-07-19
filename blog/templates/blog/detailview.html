@@ -20,17 +20,21 @@
     <div class="container-fluid">
         <!-- Blog post -->
         <div class="row">
+            <!-- Blog title -->
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2 my-5">
                 <h3>{{data.blog_title}}</h3><br>
             </div>
+            <!-- Blog text -->
             <div class="col-12 col-md-6 col-lg-4 mb-5 mt-md-5">
                 <h3>Blog</h3>
+                <!-- Edit/delete buttons for superuser -->
                 {% if request.user.is_superuser %}
                     <small class="ml-3">
                         <a href="{% url 'edit_blog' _id=data.id %}">Edit</a> | 
                         <a class="text-danger" href="{% url 'delete_blog' _id=data.id %}" onclick="return confirm('Are you sure you want to delete this blog post?');">Delete</a>
                     </small>
                 {% endif %}
+                <!-- Blog post text-->
                 <p>{{data.blog}}</p>
                 <hr/>
                 <a href="{% url 'blogs' %}">Go Back</a>
@@ -53,12 +57,18 @@
                         <p>To post a comment please <a href="{% url 'account_login' %}">log in or sign up.</a></p>
                     {% endif %}
                 </div>
-                <!-- Posted comments -->
-                {% for comment in comments %}
-                    <strong>{{comment.author}}</strong><br><em>{{comment.created}}</em>
-                    <p>{{comment.comment_text}}</p>
-                    <hr>
-                {% endfor %}
+            </div>
+        </div>
+        <!-- Posted comments -->
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2 my-3">
+                <div class="mb-5 ml-3">
+                    {% for comment in comments %}
+                        <strong>{{comment.author}}</strong><br><em>{{comment.created}}</em>
+                        <p>{{comment.comment_text}}</p>
+                        <hr>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
