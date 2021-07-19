@@ -773,7 +773,7 @@ There is a payment form formatted conventionally. Currently this can be used usi
 
 Stripe has been used here for security. 
 
-If a user is not registered, when selecting ‘Secure Checkout’ they are redirected to the signup page. 
+If a user is not registered, instead of 'Secure Checkout' they see a button that says 'Sign in to complete purchase' and are redirected to the sign in page. Whilst the redirect links here are not the smoothest UX, it does mean that only authorised users that have registered can make a purchase. This has also been tested by trying to bypass the URL which does not work and is therefore safe, this is built in both the html template and the python code.
 
 If the payment details are invalid the user is given that feedback and asked to check their details.
 
