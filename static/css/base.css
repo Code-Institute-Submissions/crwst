@@ -10,6 +10,8 @@ body {
     height: calc(100vh - 164px);
 }
 
+/*........................ Special offer banner */
+
 #delivery-banner .zoomIn {
     background-color: #dcdcdc;
     -webkit-transform: scale(100%);
@@ -34,6 +36,8 @@ body {
 #delivery-banner h4 {
     font-size: 1rem;
 }
+
+/* .................. Template overlay */
 
 .overlay {
     height: 100%;
@@ -72,6 +76,14 @@ ul {
     color: #fff;
 }
 
+input[name='q']::placeholder {
+    color: #aab7c4;
+}
+
+.cart {
+    color: #000;
+}
+
 /*............................. Buttons */
 
 /* Primary call to action */
@@ -88,7 +100,7 @@ ul {
 }
 
 
-/*............................. Return to top icon */
+/*...................... Return to top icon */
 
 .btt-button {
     height: 42px;
@@ -111,6 +123,8 @@ ul {
 }
 
 
+/* ----------------------------- Products */ 
+
 /* Zoom In on product hover */
 
 .zoomIn img {
@@ -123,11 +137,6 @@ ul {
 .zoomIn:hover img {
     -webkit-transform: scale(100%);
     transform: scale(100%);
-}
-
-
-input[name='q']::placeholder {
-    color: #aab7c4;
 }
 
 
@@ -168,6 +177,7 @@ input[name='q']::placeholder {
 
 
 /* ...............take from Bulma to keep icons consistent */
+
 .icon {
     align-items: center;
     display: inline-flex;
