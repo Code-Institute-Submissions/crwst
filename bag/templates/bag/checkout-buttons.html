@@ -5,10 +5,19 @@
     </span>
     <span class="text-uppercase">Keep Shopping</span>
 </a>
-<!-- Secure checkout button  -->
-<a href="{% url 'checkout' %}" class="btn btn-style rounded-0 btn-lg">
-    <span class="text-uppercase">Secure Checkout</span>
+<!-- Secure checkout button (or sign in if not logged in already)  -->
+{% if user.is_authenticated %}
+    <a href="{% url 'checkout' %}" class="btn btn-style rounded-0 btn-lg">
+        <span class="text-uppercase">Secure Checkout</span>
+        <span class="icon">
+            <i class="fas fa-lock"></i>
+        </span>
+    </a>
+{% else %}
+<a href="{% url 'account_login' %}" class="btn btn-style rounded-0 btn-lg">
+    <span>Sign in and complete your purchase</span>
     <span class="icon">
         <i class="fas fa-lock"></i>
     </span>
 </a>
+{% endif %}
