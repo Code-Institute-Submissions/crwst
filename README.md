@@ -227,6 +227,16 @@ Sources of design research came from Dribble, Pinterest and UXPlanet as well as 
 
 ### Colours
 
+A minimal colour scheme has been purposefully chosen against lots of white space so that the product images stand out and that the site has sufficient contrast to be accessible.
+
+Grey text is used for contrast and accessibility against white turning black on hover. This is alternated on primary buttons which are dark grey with white text.
+
+The checkout has its own css file, and form colour scheme with a blue loading overlay. The colour blue is known for its psychological associations with trust so adds feelings of security here. This is also the case for links in the authentication app.
+
+Bootstrap’s danger, warning, info and success colours have been used. 
+
+![Colour scheme](readme/images/colours.png)
+
 ### Fonts
 
 I have used Roboto Mono from Google Fonts, with back up Monospace. It is an old-fashioned text that has come to be contemporary and used in small business branding to give it’s design a minimal aesthetic. The font family was imported in to the main base.css file.
