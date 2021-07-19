@@ -938,6 +938,8 @@ When publishing a comment the URL not was not redirecting to the same blog page 
 
         <button class="primaryAction btn-style" type="submit"><a href="{% url 'account_login' %}">Sign in</a></button>
 
+* On further testing, published blog comments were not styled well for responsive screens (mobile and tablet). I put the comment code into a div and added bootstrap's margin left class and chose 3 (ml-3).
+
 [Back to Contents](#contents)
 
 ---
