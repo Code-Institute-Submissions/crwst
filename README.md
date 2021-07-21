@@ -451,9 +451,9 @@ HTML:
 
 | HTML Template         | Warnings / Errors                  |
 | --------------------------- | ---------------------------------- |
-| Base Template           | None                               |
+| Base Template               | States a preconnet note is missing however it is in block core css in the line above as per google fonts instructions                             |
 | /home/                      | None                               |
-| /about/                      | None                               |
+| /about/                     | None                               |
 | /accounts/login/            | None                               |
 | /accounts/logout/           | None                               |
 | /accounts/signup/           | None                               |
@@ -494,28 +494,28 @@ All python files have been passed through the Validator and shown the following 
 | ------------------------------ | --------------------------------------------- | ---- |
 | bag/contexts.py              |                                               | Pass |
 | bag/urls.py                  |                                               | Pass |
-| bag/views.py                 |                                            | Pass |
-| ------------------------------ | --------------------------------------------- | ---- |
-| blog/admin.py                  |                                               | Pass |
-| blog/admin.py                  |                                               | Pass |
-| blog/forms.py                  |                                               | Pass |
-| blog/models.py                  |                                               | Pass |
-| blog/urls.py                  |                                               | Pass |
-| blog/views.py                  |            operators                      | Fail |
-| -----------------              | ---------------------------                   | ---- |
+| bag/views.py                 |                                               | Pass |
+| ---------------------------- | --------------------------------------------- | ---- |
+| blog/admin.py                |                                               | Pass |
+| blog/admin.py                |                                               | Pass |
+| blog/forms.py                |                                               | Pass |
+| blog/models.py               |                                               | Pass |
+| blog/urls.py                 |                                               | Pass |
+| blog/views.py                |  Operators                                    | Fail |
+| -----------------            | ---------------------------                   | ---- |
 | checkout/admin.py            |                                               | Pass |
 | checkout/apps.py             |                                               | Pass |
 | checkout/forms.py            |                                               | Pass |
-| checkout/models.py           | operators | Fail |
+| checkout/models.py           | operators                                     | Fail |
 | Checkout/signals.py          |                                               | Pass |
 | Checkout/urls.py             |                                               | Pass |
 | Checkout/views.py            | operators and multiple statements on one line (colon)     | Fail |
-| Checkout/webhook_handlers.py | Lines 71, 73, 74, 104, 148, 149 too long            | Fail |
+| Checkout/webhook_handlers.py | Lines 71, 73, 74, 104, 148, 149 too long      | Fail |
 | Checkout/webhooks.py         | Line 43 too long                              | Fail |
-| -----------------              | ---------------------------                   | ---- |
+| -----------------            | ---------------------------                   | ---- |
 | Home/urls. py                |                                               | Pass |
 | Home/views.py                |                                               | Pass |
-| -----------------              | ---------------------------                   | ---- |
+| -----------------            | ---------------------------                   | ---- |
 | Products/admin.py            |                                               | Pass |
 | Products/forms.py            |                                               | Pass |
 | Products/models.py           |                                               | Pass |
@@ -672,6 +672,8 @@ This user story is achieved.
 * Have a personalised user profile to view my personal order history and order confirmations 
 
 The user can navigate to their profile from the ‘My Account’ in the main menu. They can see their default details in a form (if previously saved) or add/update as they wish. They are also able to view their order history. The order history includes a link to the order confirmations. 
+
+This is restricted so that only the logged in user can see their orders. This prevents users bypassing this authentication via the URL and breaching security by seeing a customers data.
 
 This user story is achieved.
 
