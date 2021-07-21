@@ -952,6 +952,8 @@ When publishing a comment the URL not was not redirecting to the same blog page 
 
 * On further testing, published blog comments were not styled well for responsive screens (mobile and tablet). I put the comment code into a div and added bootstrap's margin left class and chose 3 (ml-3).
 
+* On testing URL bypassing and security I noted that users can bypass order confirmation and checkout success. This would mean they can find sensitive details of other users, and once viewed (if they have an account) the order attaches to their profile. To try to resolve this, I included @login_required to the functions, on testing this only stoped non-logged in users bypassing however logged in users can override other users.
+
 [Back to Contents](#contents)
 
 ---
