@@ -429,7 +429,7 @@ There is a Bag App and a Home App however neither currently have the need for mo
 * I sent my project to a peer on Slack to get feedback and test the user stories for me. 
 * Through development I asked a few friends and members of my family to use the site. I gave them a basic instruction to browse and purchase, and watched how they interacted with the site, this flagged responsivity styling and invalid links that I adjusted throughout. 
 * The links and functionality, inc bootstrap css, have all been tested to make sure that they work across all devices and in different browsers.
-* All CRUD functions were tested to ensure the functioned correctly, both on the front end, and in the database too.
+* All CRUD functions were tested to ensure the functioned correctly, both on the front end, and in the database too. This data management was tested throughout development using the django admin as well as checking results on the front end. When models were added, and following products, profiles and blogs being added, edited and deleted as well as orders were all checked to ensure the data have saved (or was removed) correctly.
 
 **For testing purposes, please use the following credit card details:**
 
