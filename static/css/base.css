@@ -292,6 +292,12 @@ footer a:hover {
     text-decoration: none;
 }
 
+/*..........Height so footer isnt stuck midpage on templates with short content */
+
+.wholePage {
+    height: 100vh;
+}
+
 /*............................ Media Queries */
 
 /* Slighly larger container on extra large screens */
