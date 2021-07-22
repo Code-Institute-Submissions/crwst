@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col">
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Internal Server Error.</h2>
+                <p class="text-center">Sorry! The server encountered an internal error or misconfiguration and is unable to complete your request.</p>
+                <a href="{% url 'home' %}" class="btn btn-lg btn-style rounded-0 ml-5">Go to homepage</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

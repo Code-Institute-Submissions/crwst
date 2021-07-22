@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from home import views as home_views
 
 
 urlpatterns = [
@@ -29,3 +30,16 @@ urlpatterns = [
     path('profile/', include('profiles.urls')),
     path('blogs/', include('blog.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+handler404 = 'home.views.page_not_found_view'
+if settings.DEBUG:
+    urlpatterns.append(path('404/', home_views.page_not_found_view))
+
+handler403 = 'home.views.permission_denied_view'
+if settings.DEBUG:
+    urlpatterns.append(path('403/', home_views.permission_denied_view))
+
+handler500 = 'home.views.error_view'
+if settings.DEBUG:
+    urlpatterns.append(path('500/', home_views.error_view))
