@@ -305,6 +305,7 @@ The base template includes a top navigation that is responsive (main-nav and mob
 A search function is there to allow the user to easily search for a product on any page, this is good UX and can only help increase sales for the Site owner. 
 
 Under the menu is a banner for special offers. It enlarges when the user hovers over it and links to the products page on click for enhanced UX. 
+
 There is also a footer with contact details. 
 
 * Home 
@@ -382,6 +383,12 @@ Only superusers are authorised to edit a product or a blog. This is a simple for
 * Toasts
 
 Success, information, warning and error messages are built into this project so that users receive relevant feedback to their actions. These appear in the top right. 
+
+* 404/403/500 Error pages
+
+The site has been made with 404/403/500 custom error pages. Currently the site is desinged to redirect an unauthorised user to a sign in page rather than a 403 page, however this functions for other security breaches or can be utilised in a future release. The 404 page is displayed when content is no longer available, for example a product or blog that does not exist. 
+
+These are linked to messages, so an error toast message will show what the issue is. For example 'No Product matches the given query" notifying the user of the problem.
 
 ### Features to implement 
 
@@ -953,6 +960,8 @@ When publishing a comment the URL not was not redirecting to the same blog page 
 * On further testing, published blog comments were not styled well for responsive screens (mobile and tablet). I put the comment code into a div and added bootstrap's margin left class and chose 3 (ml-3).
 
 * On testing URL bypassing and security I noted that users can bypass order confirmation and checkout success. This would mean they can find sensitive details of other users, and once viewed (if they have an account) the order attaches to their profile. To try to resolve this, I included @login_required to the functions, on testing this only stoped non-logged in users bypassing however logged in users can override other users.
+
+* On testing as the sticky class is used on the footer, this is displayed mid page on templates with shorter content which doesnt look appealing. To resolve this I have added a class wholePage with style height: 100vh; which means the footer reamins on the bottom for these particular templates.
 
 [Back to Contents](#contents)
 
