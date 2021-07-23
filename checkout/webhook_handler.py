@@ -63,7 +63,8 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount / 100, 2)
-
+        print("Handle payment intent 1")
+        sys.stdout.flush()
         # Clean data in shipping details
         for field, value in shipping_details.address.items():
             if value == "":
@@ -83,10 +84,13 @@ class StripeWH_Handler:
                 profile.default_street_address2 = shipping_details.address.line2,
                 profile.default_county = shipping_details.address.state,
                 profile.save()
-
+        print("Handle payment intent 2")
+        sys.stdout.flush()
         order_exists = False
         attempt = 1
         while attempt <= 5:
+            print("Handle payment intent 3")
+            sys.stdout.flush()
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -115,8 +119,12 @@ class StripeWH_Handler:
                 content=f'Webhook recieved: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
         else:
+            print("Handle payment intent 4")
+            sys.stdout.flush()
             order = None
             try:
+                print("Handle payment intent 5")
+                sys.stdout.flush()
                 order = Order.objects.create(
                         full_name=shipping_details.name,
                         user_profile=profile,
