@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -35,18 +35,26 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
 def order_history(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
 
-    messages.info(request, (
-        f'This is a past confirmation for order number {order_number}. '
-        'A confirmation email was sent on the order date.'
-    ))
+    if Order.user_profile == request.user:
 
-    template = 'checkout/checkout_success.html'
-    context = {
-        'order': order,
-        'from_profile': True,
-    }
+        order = get_object_or_404(Order, order_number=order_number)
 
-    return render(request, template, context)
+        messages.info(request, (
+            f'This is a past confirmation for order number {order_number}. '
+            'A confirmation email was sent on the order date.'
+        ))
+
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+            'from_profile': True,
+        }
+
+        return render(request, template, context)
+
+    else:
+        messages.error(request, 'You are not authorised to view this page.')
+        return redirect(reverse('home'))
