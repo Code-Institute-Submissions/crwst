@@ -14,7 +14,8 @@ import sys
 
 class StripeWH_Handler:
     """ Handle Stripe webhooks """
-
+    print("Handler created")
+    sys.stdout.flush()
     def __init__(self, request):
         self.request = request
 
@@ -39,6 +40,8 @@ class StripeWH_Handler:
         )
 
     def handle_event(self, event):
+        print("HAndle event")
+        sys.stdout.flush()
         """
         Handle an unknown/unexpected/generic webhook event
         """
@@ -47,6 +50,8 @@ class StripeWH_Handler:
             status=200)
 
     def handle_payment_intent_succeeded(self, event):
+        print("Handle payment intent")
+        sys.stdout.flush()
         """
         Handle an payment_intent.succeeded webhook from Stripe
         """
@@ -159,6 +164,8 @@ class StripeWH_Handler:
                       status=200)
 
     def handle_payment_intent_payment_failed(self, event):
+        print("intent failed")
+        sys.stdout.flush()
         """
         Handle an payment_intent.payment_failed webhook from Stripe
         """
