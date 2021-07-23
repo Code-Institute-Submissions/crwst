@@ -9,6 +9,7 @@ from profiles.models import UserProfile
 
 import json
 import time
+import sys
 
 
 class StripeWH_Handler:
@@ -19,6 +20,8 @@ class StripeWH_Handler:
 
     def _send_confirmation_email(self, order):
         """ Send the user a confirmation email """
+        print("In Sendmail function")
+        sys.stdout.flush()
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -26,7 +29,8 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-
+        print(cust_email, subject, body, settings.DEFAULT_FROM_EMAIL)
+        sys.stdout.flush()
         send_mail(
             subject,
             body,
@@ -99,6 +103,8 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
+            print("order exists")
+            sys.stdout.flush()
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook recieved: {event["type"]} | SUCCESS: Verified order already in database',
@@ -138,11 +144,15 @@ class StripeWH_Handler:
                             )
                             order_line_item.save()
             except Exception as e:
+                print("wh 500")
+                sys.stdout.flush()
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook recieved: {event["type"]} | ERROR: {e}',
                     status=500)
+        print("Webhook 200")
+        sys.stdout.flush()
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook recieved: {event["type"]} | SUCCESS: Created order in webhook',
