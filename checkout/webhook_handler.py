@@ -14,15 +14,12 @@ import sys
 
 class StripeWH_Handler:
     """ Handle Stripe webhooks """
-    print("Handler created")
-    sys.stdout.flush()
     def __init__(self, request):
         self.request = request
 
     def _send_confirmation_email(self, order):
         """ Send the user a confirmation email """
-        print("In Sendmail function")
-        sys.stdout.flush()
+
         cust_email = order.email
         subject = render_to_string(
             'checkout/confirmation_emails/confirmation_email_subject.txt',
@@ -30,8 +27,6 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        print(cust_email, subject, body, settings.DEFAULT_FROM_EMAIL)
-        sys.stdout.flush()
         send_mail(
             subject,
             body,
@@ -40,8 +35,6 @@ class StripeWH_Handler:
         )
 
     def handle_event(self, event):
-        print("HAndle event")
-        sys.stdout.flush()
         """
         Handle an unknown/unexpected/generic webhook event
         """
@@ -50,8 +43,6 @@ class StripeWH_Handler:
             status=200)
 
     def handle_payment_intent_succeeded(self, event):
-        print("Handle payment intent")
-        sys.stdout.flush()
         """
         Handle an payment_intent.succeeded webhook from Stripe
         """
@@ -63,8 +54,7 @@ class StripeWH_Handler:
         billing_details = intent.charges.data[0].billing_details
         shipping_details = intent.shipping
         grand_total = round(intent.charges.data[0].amount / 100, 2)
-        print("Handle payment intent 1")
-        sys.stdout.flush()
+
         # Clean data in shipping details
         for field, value in shipping_details.address.items():
             if value == "":
@@ -84,13 +74,9 @@ class StripeWH_Handler:
                 profile.default_street_address2 = shipping_details.address.line2
                 profile.default_county = shipping_details.address.state
                 profile.save()
-        print("Handle payment intent 2")
-        sys.stdout.flush()
         order_exists = False
         attempt = 1
         while attempt <= 5:
-            print("Handle payment intent 3")
-            sys.stdout.flush()
             try:
                 order = Order.objects.get(
                     full_name__iexact=shipping_details.name,
@@ -112,19 +98,13 @@ class StripeWH_Handler:
                 attempt += 1
                 time.sleep(1)
         if order_exists:
-            print("order exists")
-            sys.stdout.flush()
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook recieved: {event["type"]} | SUCCESS: Verified order already in database',
                 status=200)
         else:
-            print("Handle payment intent 4")
-            sys.stdout.flush()
             order = None
             try:
-                print("Handle payment intent 5")
-                sys.stdout.flush()
                 order = Order.objects.create(
                         full_name=shipping_details.name,
                         user_profile=profile,
@@ -157,23 +137,17 @@ class StripeWH_Handler:
                             )
                             order_line_item.save()
             except Exception as e:
-                print("wh 500")
-                sys.stdout.flush()
                 if order:
                     order.delete()
                 return HttpResponse(
                     content=f'Webhook recieved: {event["type"]} | ERROR: {e}',
                     status=500)
-        print("Webhook 200")
-        sys.stdout.flush()
         self._send_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook recieved: {event["type"]} | SUCCESS: Created order in webhook',
                       status=200)
 
     def handle_payment_intent_payment_failed(self, event):
-        print("intent failed")
-        sys.stdout.flush()
         """
         Handle an payment_intent.payment_failed webhook from Stripe
         """
