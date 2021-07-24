@@ -1,5 +1,7 @@
 # Crwst project
 
+![Crwst](readme/images/crwstmockup.jpg)
+
 The main goal for this project was to produce a full-stack web-development site based around business logic used to control a centrally-owned dataset, to set up an authentication mechanism and provide paid access to the site's data and/or activities based on the dataset, such as the purchase of a product/service. The site has been built using HTML, CSS, JavaScript, Python, Django, MySQL and Stripe.
 
 A live version of the site can be found [here](https://crwst.herokuapp.com)
