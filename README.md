@@ -339,7 +339,7 @@ The bag shows the items in the shoppers cart with the ability to adjust the quan
 
 * Checkout
 
-Once clicked secure checkout registered users will be taken to the checkout page. Only registered users will be allowed to get to this, otherwise redirected to signup/log in. 
+Once clicked secure checkout registered users will be taken to the checkout page. Only registered users will be allowed to get to this, otherwise they will be redirected to signup/log in. 
 
 This includes a form for delivery details, which if signed in and saved in their profile, will appear pre-populated. It also includes an order summary with total and delivery charges. 
 
@@ -932,6 +932,43 @@ During Stripe Webhook testing files were accidentally added then unstaged, so ne
 * Stripe Webhook
 
 When progressing with work in the checkout the /wh link was not appearing in the terminal. Checking gitpod and my Stripe dashboard, I needed to add a second stripe webhook listener in development as the gitpod endpoint link changed by one digit. I checked Stripe and the web address, noted the difference and created a new webhook. 
+
+After deployment, on testing I noted the stripe payment succeed webhook was now failing and the order email was not being sent (however the order confirmation was still showing in the browser and was correctly saving to the database). Registration emails were working, and all other webhooks were successful so it meant the issue was likely to be in checkout/views.py or the webhook_handler.py. To resolve this, I checked the code, checked my stripe keys and put print statements in to determine the email address and whether it was being picked up correctly. The keys were correct, the logic of the code was correct and it was picking up the correct email address however the email was not still not being sent. Stripe noted that it was resulting in a 500 server error, so although from the front end and database the order was succeeded there was still an issue. After trying to override this in the view and sending the email from there (and failing) I reached out to student support who checked with me and ran tests whilst logged in in heroku in the terminal. It was found that I had a syntax error as had some commas after variable declarations that shouldn't have been there which were breaking the webhook;
+
+    checkout/webhook_handler.py, Line 79
+
+    # Incorrect with commas 
+    profile.default_phone_number = shipping_details.phone,
+    profile.default_country = shipping_details.address.country,
+    profile.default_postcode = shipping_details.address.postal_code,
+    profile.default_town_or_city = shipping_details.address.city,
+    profile.default_street_address1 = shipping_details.address.line1,
+    profile.default_street_address2 = shipping_details.address.line2,
+    profile.default_county = shipping_details.address.state,
+
+    # Corrected code
+    profile.default_phone_number = shipping_details.phone
+    profile.default_country = shipping_details.address.country
+    profile.default_postcode = shipping_details.address.postal_code
+    profile.default_town_or_city = shipping_details.address.city
+    profile.default_street_address1 = shipping_details.address.line1
+    profile.default_street_address2 = shipping_details.address.line2
+    profile.default_county = shipping_details.address.state
+    profile.save()
+
+ I was still getting a 200 successful result though because stripe sent a second webhook which was being successfully handled by this route:
+
+    checkout/webhook_handler.py Line 37
+    
+    def handle_event(self, event):
+            """
+            Handle an unknown/unexpected/generic webhook event
+            """
+            return HttpResponse(
+                content=f'Unhandled webhook recieved: {event["type"]}',
+                status=200)
+
+Once rectified and tested again, the email confirmation sends correctly, the webhook succeeds and the order correctly saves in the database.
 
 * Blog comment 
 
