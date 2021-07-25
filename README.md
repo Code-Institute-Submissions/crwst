@@ -358,6 +358,8 @@ If the shopper provides invalid card or shipping details they are provided feedb
 
 Providing a successful order completes the shopper will be taken to this page and sent an email confirmation. This shows the full summary of their order. 
 
+The checkout success view is defensively programmed so that only the creator of the order or a superuser can see this. It is so the url cannot be bypassed.
+
 * Profile 
 
 A user can navigate to their profile from the Account link on the main menu. They are shown their default details (if saved) via a form. Alternatively, they can come to this page and add/override their default details. 
