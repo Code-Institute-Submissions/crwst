@@ -37,10 +37,11 @@ def profile(request):
 
 @login_required
 def order_history(request, order_number):
+    """ Display the order confirmation of previously made orders """
 
-    if Order.user_profile == request.user:
+    order = get_object_or_404(Order, order_number=order_number)
 
-        order = get_object_or_404(Order, order_number=order_number)
+    if order.user_profile.user.username == request.user.username:
 
         messages.info(request, (
             f'This is a past confirmation for order number {order_number}. '
