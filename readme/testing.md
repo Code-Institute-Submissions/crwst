@@ -274,7 +274,7 @@ This user story is achieved.
 
 The user can navigate to their profile from the ‘My Account’ in the main menu. They can see their default details in a form (if previously saved) or add/update as they wish. They are also able to view their order history. The order history includes a link to the order confirmations. 
 
-This is restricted so that only the logged in user can see their orders. This prevents users bypassing this authentication via the URL and breaching security by seeing a customers data.
+This is restricted so that only the logged in user can see their orders. This prevents users bypassing this authentication via the URL and breaching security by seeing a customers data. In addition I have allowed superusers to be able to see these orders for management purposes.
 
 This user story is achieved.
 

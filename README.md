@@ -364,6 +364,8 @@ A user can navigate to their profile from the Account link on the main menu. The
 
 The Order history is shown, with links that take them from that order information to their original order confirmation/thank you page.
 
+It has been defensivly built so that only the creator of the order and the superuser can view an order for security reasons.
+
 If a user has not made any orders, a message will be displayed stating the fact so that this portion of the page is not blank. It also enhances the user experience and may entice them to browse products and make a purchase.
 
 * All Blogs
