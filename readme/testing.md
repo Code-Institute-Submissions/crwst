@@ -15,6 +15,19 @@ The site has gone through manual, automated and user story testing as shown belo
   * [Automated Testing](#automated-testing)
   * [User Testing](#user-testing)
 
+**For testing purposes, please use the following credit card details:**
+
+Note that Stripe is test stage and not activated.
+
+`Card number:` 4242 4242 4242 4242 
+`Exp:` 4242 (MM YY)
+` CSV:`  any 3 numbers, ie. 424 
+
+**For testing purposes, please use the following superuser details:**
+ 
+`Username:` superadmin
+`Password:` ms4crwst
+
 ---
 
 ### Manual Testing
@@ -24,14 +37,6 @@ The site has gone through manual, automated and user story testing as shown belo
 * Through development I asked a few friends and members of my family to use the site. I gave them a basic instruction to browse and purchase, and watched how they interacted with the site, this flagged responsivity styling and invalid links that I adjusted throughout. 
 * The links and functionality, inc bootstrap css, have all been tested to make sure that they work across all devices and in different browsers.
 * All CRUD functions were tested to ensure the functioned correctly, both on the front end, and in the database too. This data management was tested throughout development using the django admin as well as checking results on the front end. When models were added, and following products, profiles and blogs being added, edited and deleted as well as orders were all checked to ensure the data have saved (or was removed) correctly.
-
-**For testing purposes, please use the following credit card details:**
-
-Note that Stripe is test stage and not activated.
-
-`Card number:` 4242 4242 4242 4242 
-`Exp:` 4242 (MM YY)
-` CSV:`  any 3 numbers, ie. 424 
 
 [Back to Contents](#contents)
 

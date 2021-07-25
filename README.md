@@ -17,6 +17,11 @@ Note that Stripe is test stage and not activated.
 `Exp:` 4242 (MM YY) 
 ` CSV:`  any 3 numbers, ie. 424 
 
+**For testing purposes, please use the following superuser details:**
+ 
+`Username:` superadmin
+`Password:` ms4crwst
+
 ---
 
 ## **Contents**
