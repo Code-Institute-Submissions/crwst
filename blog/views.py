@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 
+# Basic structure of models adapted taken from
+# (https://www.askpython.com/django/django-blog-app)
+
 
 def BlogListView(request):
     """ A view to see all the blog posts and search function """
@@ -31,7 +34,8 @@ def BlogListView(request):
 
 
 def BlogDetailView(request, _id):
-    """ A view to see an individual blog post and if authorised add comments """
+    """ A view to see an individual blog post
+    and if authorised add comments """
     try:
         data = Blog.objects.get(id=_id)
         comments = Comment.objects.filter(blog=data)

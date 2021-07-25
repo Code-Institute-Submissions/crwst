@@ -126,6 +126,8 @@ input[name='q']::placeholder {
 /* ----------------------------- Products */ 
 
 /* Zoom In on product hover */
+/* Parts of this code were taken from (https://stackoverflow.com/questions/33811041/
+javascript-zoom-in-on-mouseover-without-jquery-or-plugins) */
 
 .zoomIn img {
     -webkit-transform: scale(90%);
@@ -176,7 +178,8 @@ input[name='q']::placeholder {
 }
 
 
-/* ...............take from Bulma to keep icons consistent */
+/* ...............take from Bulma to keep icons consistent
+/* (https://bulma.io/documentation/elements/icon/) */
 
 .icon {
     align-items: center;

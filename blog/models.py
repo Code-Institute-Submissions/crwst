@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+# Basic structure of models adapted taken from
+# (https://www.askpython.com/django/django-blog-app)
+
 
 class Blog(models.Model):
     blog_title = models.CharField(max_length=60)
