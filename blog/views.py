@@ -7,6 +7,7 @@ from django.db.models import Q
 
 
 def BlogListView(request):
+    """ A view to see all the blog posts and search function """
     dataset = Blog.objects.all()
     query = None
     form = SearchForm()
@@ -30,6 +31,7 @@ def BlogListView(request):
 
 
 def BlogDetailView(request, _id):
+    """ A view to see an individual blog post and if authorised add comments """
     try:
         data = Blog.objects.get(id=_id)
         comments = Comment.objects.filter(blog=data)
