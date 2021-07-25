@@ -56,6 +56,20 @@ def order_history(request, order_number):
 
         return render(request, template, context)
 
+    elif request.user.is_superuser:
+        messages.info(request, (
+            f'This is a past confirmation for order number {order_number}. '
+            'A confirmation email was sent on the order date.'
+        ))
+
+        template = 'checkout/checkout_success.html'
+        context = {
+            'order': order,
+            'from_profile': True,
+        }
+
+        return render(request, template, context)
+
     else:
         messages.error(request, 'You are not authorised to view this page.')
         return redirect(reverse('home'))
