@@ -1,4 +1,4 @@
-# Crwst project
+# Crwst Project
 
 ![Crwst](readme/images/crwstmockup.jpg)
 
@@ -6,7 +6,7 @@ The main goal for this project was to produce a full-stack web-development site 
 
 A live version of the site can be found [here](https://crwst.herokuapp.com)
 
-The main aim of this site it to provide the user with an online bakery inventory of items of food that they can purchase. The products have been split into 3 categories; Bakes, Bread and Savouries. The site is flexible and further products can be added. The site owner also has the ability to add blog posts and both them and registered users can comment on these blogs to form a discussion.
+The main aim of this site it to provide the user with an online bakery showing an inventory of items of food that they can purchase. The products have been split into 3 categories; Bakes, Bread and Savouries. The site is flexible and further products can be added as well as edited and deleted. The site owner also has the ability to add, edit and delete blog posts and both them and registered users can comment on these blogs to form a discussion.
 
 **For testing purposes, please use the following credit card details:**
 
@@ -16,6 +16,7 @@ Note that Stripe is test stage and not activated.
 
 `Exp:` 4242 (MM YY) 
 ` CSV:`  any 3 numbers, ie. 424 
+
 
 **For testing purposes, please use the following superuser details:**
  
@@ -46,9 +47,10 @@ Note that Stripe is test stage and not activated.
   * [Features to implement](#features-to-implement)
 * [Database Design](#database-design)
 * [Testing and Debugging](#testing-and-debugging)
-  * [Manual Testing](#manual-testing)
-  * [Automated Testing](#automated-testing)
-  * [User Testing](#user-testing)
+  * [Manual Testing](#testing-and-debugging)
+  * [Automated Testing](#testing-and-debugging)
+  * [User Testing](#testing-and-debugging)
+  * [Debugging](#testing-and-debugging)
 * [Deployment](#deployment)
   * [Hosting](#hosting)
   * [AWS](#aws)
@@ -85,7 +87,7 @@ Research from [Bakery Info](https://bakeryinfo.co.uk/bakery-market-report/bakery
 
 ### Strategy 
 
-To start I created a competitive benchmark to compare other bakeries that had an online presence and store to help determine what is this companies USP. What can it do that helps it stand out and increase customers. I have compared multiple bakery websites, including those that do and don’t have an online purchase ability, to determine how their sites are structured, how they separate their products into categories, how they structure their navigation, UI styles and what information they provide to users about products and their profiles and orders. 
+To start I created a competitive benchmark to compare other bakeries that had an online presence and store to help determine what is this company's USP. What can it do that helps it stand out and increase customers. I have compared multiple bakery websites, including those that do and don’t have an online purchase ability, to determine how their sites are structured, how they separate their products into categories, how they structure their navigation, UI styles and what information they provide to users about products and their profiles and orders. 
 
 * https://www.fabulouswelshcakes.co.uk/ 
 
@@ -125,7 +127,7 @@ From this brand comparison and market research key tasks/cases for the site are 
 | P | Allow registered users to comment on blogs | 3 | 5 |
 |   |  *Total* |  59  | 62  | 
 
-As the importance is higher than the viability this is going to work. The features that are that are the most important and achievable are: 
+As the viability is higher than the importance this is going to work. The features that are that are the most important and achievable are: 
 
 
 | A | Search function for products by keyword or ingredient 
@@ -152,13 +154,13 @@ As the importance is higher than the viability this is going to work. The featur
 
 The other features can be released in future updates. 
 
-The user will expect to be able to intuitively find products, update their cart and securely checkout. They may want to read blog posts on recipes, local information and ingredients etc. 
+The user will expect to be able to intuitively find products, update their cart and securely checkout. They may also want to read blog posts on recipes, local information and ingredients and further information about the company. 
 
-Therefore the navigation should be intuitive and simple. Global navigation will be used for conventionality. Key call to actions will have obvious UI styling with secondary actions have more subtle. For example, ‘Add to Cart’ will be a dark button, whereas ‘Keep Shopping’ will be an outline.  
+Therefore the navigation should be intuitive and simple. Global navigation will be used for conventionality. Key call to actions will have obvious UI styling with secondary actions have more subtle. For example, ‘Add to Cart’ will be a dark button, whereas ‘Keep Shopping’ will be an outlined button.
 
-A special offers banner will appear in the base template and therefore be on every page enticing the user to buy. 
+A special offers banner will appear in the base template and therefore be on every page enticing the user to buy. This will have javascript that animates on hover and on click links back to the products page.
 
-From the menu the user can find products and sort them by category, price, and alphabetically. 
+From the menu the user can find products by clicking shop and opt to sort them by category, price, and alphabetically. 
 
 A search bar will be on the base template and as such every page so a user can quickly search for a product at any point. This searches the titles of products and their descriptions to widen the search. 
 
@@ -210,11 +212,11 @@ The blog page has a search function will all blogs underneath, the same visual s
 
 Figma has been used to design the wireframes, with the designs in the below [wireframes](#wireframes) section. 
 
-Each template with derive from the base template providing visual and navigational consistency. 
+Each template will derive from the base template providing visual and navigational consistency. The navigation will be at the top of the page as per convention. 
 
 The user actions will each have the same visual style for consistency. They will have the same colour theme, the same typography, and a similar percentage of content and whitespace, padding and margins. Components will have enough space around them to breath and remain digestible for users. 
 
-It will be designed responsibly, mobile first, so that these components are visually consistent across devices but suitable for that screen. 
+It will be designed responsivly, mobile first, so that these components are visually consistent across devices but suitable for that screen. 
 
 The final design is an iteration from the original wireframes. 
 
@@ -315,7 +317,7 @@ Under the menu is a banner for special offers. It enlarges when the user hovers 
 
 There is also a footer with contact details. 
 
-* Home 
+* Home/Index
 
 This has a large image to cover the page for visual interest, with a bold call to action to link to the products page.
 
@@ -342,7 +344,7 @@ Only SuperUsers can see edit and delete links under product details.
 
 * Bag 
 
-The bag shows the items in the shoppers cart with the ability to adjust the quantities and/or remove the item. They can see the subtotal and delivery. There is a large Secure Checkout button. 
+The bag shows the items in the shoppers cart with the ability to adjust the quantities and/or remove the item. They can see the subtotal and delivery. There is a large Secure Checkout button. If a user is not signed in, they are requested to before being taken to the checkout page.
 
 * Checkout
 
@@ -356,7 +358,7 @@ If the shopper provides invalid card or shipping details they are provided feedb
 
 * Order confirmation
 
-Providing a successful order completes the shopper will be taken to this page and sent an email confirmation. This shows the full summary of their order. 
+Providing a successful order completes, the shopper will be taken to this page and sent an email confirmation. This shows the full summary of their order. 
 
 The checkout success view is defensively programmed so that only the creator of the order or a superuser can see this. It is so the url cannot be bypassed.
 
@@ -375,7 +377,7 @@ From the main navigation a user can navigate to the business’s blog page. Ther
 
 Like the products page, the user can see the total number of blogs and if searched the number of results for that keyword.
 
-Superusers can see edit/delete buttons. 
+Superusers can see edit/delete buttons for each individual blog.
 
 * Blog detail
 
@@ -383,7 +385,7 @@ A blog detail shows the blog title, blog text and published comments. Only regis
 
 Blog posts include a comment section where authorised users can post comments.  This has a maximum character length of 3000. Comments are typcially between 60-5000 so this suits. 
 
-Superusers can see edit/delete buttons. 
+Superusers can see edit/delete buttons for the blog post.
 
 * Add product/blog
 
@@ -415,7 +417,7 @@ There are many features that I would like to implement in future releases:
 * A text input field on cart page so that any dietary requirements could be noted – would need a logically caveat for the business but it’s a potential feature
 * Adding further categories such as Vegetarian or Vegan would be important for users
 * Allow Super User to add categories (this would require further development to ensure menu links were added to)
-* Add more accurate redirects links as they are not always linked for best UX – eg signing in to comment on a blog redirects to homepage 
+* Add more accurate redirects links as they are not always linked for best UX – eg signing in to comment on a blog redirects to homepage rather than the page the user signed in from.
 * Have the number of items in the cart appear in the cart icon as well as the total, as per ecommerce convention 
 * Allow shoppers to sign in and register their accounts with their social media accounts
 
@@ -426,6 +428,7 @@ There are many features that I would like to implement in future releases:
 ## Database Design
 
 Through the development of the project, SQLite3 was used as this is the default database included with Django. Note, on deployment, you are given the option to utilise PostgreSQL as this is included with Heroku.
+
 Django Allauth, specifically django.contrib.auth.models provided the User model that is used in the Profile App.
 
 There is a Bag App and a Home App however neither currently have the need for models.
@@ -435,7 +438,7 @@ There is a Bag App and a Home App however neither currently have the need for mo
 * Profiles App; User Profile Model
 * Blog App; Blog Model, Comments Model 
 
-A note on the blog app: Currently there is no maximum length for comments here, but it has been input in the html textarea as a class. Ideally it should be here in the database design and should be included in the future. 
+A note on the blog app: Currently there is no maximum length for comments in the comments model, but it has been input in the html textarea as a class. Ideally it should be here in the database design and should be included in the future. 
 
 ![Data Schema](readme/images/dataschema.png)
 
@@ -445,7 +448,7 @@ A note on the blog app: Currently there is no maximum length for comments here, 
 
 ## Testing and Debugging  
 
-Testing of the site can be found by clicking [here](https://github.com/sophnagle/crwst/blob/master/README.md#testing-and-debugging))
+Testing of the site can be found by clicking [here](https://github.com/sophnagle/crwst/blob/master/readme/testing.md#testing-and-debugging)
 
 [Back to Contents](#contents)
 
@@ -453,24 +456,25 @@ Testing of the site can be found by clicking [here](https://github.com/sophnagle
 
 ## Deployment
 
+### Hosting
+
 The site is hosted on [Heroku](www.heroku.com).
 
 The site was deployed using the following steps:
 
 * Create a new repository within GitHub.
-* Open repository in gitpod by cloning the repo from GitHub. Developed project
+* Open repository in gitpod (or workspace of your choice) by cloning the repo from GitHub
 * Create a requirements.txt file by typing pip3 freeze > requirements.txt in the terminal 
-* Log in to Heroku and selected "Create New App".
-* Select the input field "App Name" and gave app a unique name with hyphens instead of spaces.
+* Log in to Heroku and select "Create New App".
+* Select the input field "App Name" and give app a unique name with hyphens instead of spaces.
 * Select the region closest to my location
 * Select "Create App".
-* Click "Resources" and typed in Postgres in the Add-ons search bar.
-* Click "Resources" and typed in Postgres in the Add-ons search bar.
-* Select Heroku Postgres and provisioned a free Hobby Dev database.
+* Click "Resources" and type in Postgres in the Add-ons search bar.
+* Select Heroku Postgres and provision a free Hobby Dev database.
 * Retrieve the Database URL from the hidden Config Vars in "Settings" in Heroku.
-* Input the Database URL in the database path in settings.py and removed the local settings.
-* Created a Procfile and added web: web: gunicorn crwst.wsgi:application to the file.
-* Checked the Procfile to make sure there is no extra line after the first line as this can cause problems in Heroku
+* Input the Database URL in the database path in settings.py and remove the local settings.
+* Create a Procfile and add web: web: gunicorn crwst.wsgi:application to the file.
+* Check the Procfile to make sure there is no extra line after the first line as this can cause problems in Heroku
 * Push the requirements.txt and Procfile to GitHub.
 * Run migrations to build the database in Postgres.
 * Make sure settings.py file is connected to the mysql database
@@ -481,7 +485,7 @@ The site was deployed using the following steps:
 * Then use this command to load your data from the db.json file into postgres:
 ./manage.py loaddata db.json
 * Push all changes to GitHub.
-* Typed git push heroku master to push everything to Heroku.
+* Type git push heroku master to push everything to Heroku.
 * Select "Deploy" from the Heroku App menu.
 * Select "GitHub" from the "Deployment Method" section of the page.
 * Ensure my GitHub account is shown in the "Connect to GitHub" section and insert my GitHub repo name in the input field and click "Search".
@@ -551,9 +555,9 @@ In order for the static CSS, JS and media files to be stored and useable with He
 * Create a custom_storage file in your workspace
 * Finally, run python manage.py collectstatic and transfers the static info to AWS.
 
-### Local Hosting you wish to clone a copy 
+### Local Hosting
 
-If of my project you will need to:
+If you would like to make a copy of my project you will need to:
 * Navigate to my GitHub repository.
 * Click the ‘code’ button next to the Green Gitpod button.
 * Either, download the zip file or clone the repo using ‘gh repo clone’ in the terminal.
@@ -577,7 +581,7 @@ If of my project you will need to:
 
         os.environ["EMAIL_HOST_USER"] = "ADD YOUR EMAIL HOST USERNAME HERE"
 
-* The app can now be run locally by typing python manage.py in the terminal and opening the browser prompt.
+* The app can now be run locally by typing python3 manage.py runserver in the terminal and opening the browser prompt.
 
 [Back to Contents](#contents)
 
@@ -650,5 +654,9 @@ As this is a fictional site, the images were taken from [Unsplash](https://unspl
 [Home page cake](https://unsplash.com/photos/D3_u5E6E2Hg)
 
 [Crwst Team About](https://unsplash.com/photos/pMsvOrnIF3Y)
+
+--- 
+
+[Return to top](#crwst-project)
 
 [Back to Contents](#contents)

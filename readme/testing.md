@@ -14,6 +14,7 @@ The site has gone through manual, automated and user story testing as shown belo
   * [Manual Testing](#manual-testing)
   * [Automated Testing](#automated-testing)
   * [User Testing](#user-testing)
+  * [Debugging](#debugging)
 
 **For testing purposes, please use the following credit card details:**
 
@@ -89,6 +90,7 @@ JavaScript and jQuery:
 Semi colon was missing at the end of the Stripe elements JS file which has since been added. It stated this worked in the current version.
 
 Python/PEP8:
+
 All python files have been passed through the Validator and shown the following errors which have been resolved (where possible)
 
 | Python File                    | Warnings / Errors                             | Pass |
@@ -179,7 +181,7 @@ User story tests on the above user stories:
 
 These were tested through development, but have tested them all as the end of the project here too.
 
-VIEWING AND NAVIGATION
+**VIEWING AND NAVIGATION**
 
 As a **shopper** I want to be able to:
 
@@ -246,7 +248,7 @@ This user story is achieved.
 
 ![Footer](images/userstories/footer.JPG)
 
-REGISTRATION AND USER ACCOUNTS
+**REGISTRATION AND USER ACCOUNTS**
 
 As a **site user** I want to be able to: 
 
@@ -310,7 +312,7 @@ When navigating to sign in, there user is presented with a link to ‘forgot pas
 
 ![Reset Password](images/userstories/changepassword.JPG)
 
-SORTING AND SEARCHNG
+**SORTING AND SEARCHNG**
 
 As a **shopper** I want to be able to:
 
@@ -342,7 +344,7 @@ As above, when searching, the results are provided with a total of the number of
 
 This user story is achieved. 
 
-PURCHASING AND CHECKOUT 
+**PURCHASING AND CHECKOUT**
 
 As a **shopper** I want to be able to:
 
@@ -416,7 +418,7 @@ On successful completion of an order the user receives an email confirmation to 
 
 This user story is achieved. 
 
-ADMIN AND STORE MANAGEMENT
+**ADMIN AND STORE MANAGEMENT**
 
 As a **store owner** I want to be able to:
 
