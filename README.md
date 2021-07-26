@@ -381,6 +381,8 @@ Superusers can see edit/delete buttons.
 
 A blog detail shows the blog title, blog text and published comments. Only registered users will be able to publish a comment, otherwise they are suggested to sign up. 
 
+Blog posts include a comment section where authorised users can post comments.  This has a maximum character length of 3000. Comments are typcially between 60-5000 so this suits. 
+
 Superusers can see edit/delete buttons. 
 
 * Add product/blog
@@ -432,6 +434,8 @@ There is a Bag App and a Home App however neither currently have the need for mo
 * Products App; Product Model, Category Model
 * Profiles App; User Profile Model
 * Blog App; Blog Model, Comments Model 
+
+A note on the blog app: Currently there is no maximum length for comments here, but it has been input in the html textarea as a class. Ideally it should be here in the database design and should be included in the future. 
 
 ![Data Schema](readme/images/dataschema.png)
 

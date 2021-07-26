@@ -224,6 +224,8 @@ There is a blog page which the user accesses from the main menu. From this page 
 
 For a future release, it would be great to have images, to be able to sort the blog results and to be able to search for them in the main site search bar. 
 
+Blog posts include a comment section where authorised users can post comments.  This has a maximum character length of 3000. Comments are typcially between 60-5000 so this suits. 
+
 But for now this user story is satisfied. 
 
 ![Blog](images/userstories/blog.JPG)
@@ -460,7 +462,7 @@ Like editing, when viewing products superusers have additional delete links wher
 
 This user story is achieved. 
 
-* Have a blog page and be able to add blog posts	 so that my shoppers have frequent fresh content on the site
+* Have a blog page and be able to add blog post so that my shoppers have frequent fresh content on the site
 This is achieved in the above.
 
 [Back to Contents](#contents)
