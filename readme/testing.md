@@ -93,28 +93,28 @@ Python/PEP8:
 
 All python files have been passed through the Validator and shown the following errors which have been resolved (where possible)
 
-| Python File                    | Warnings / Errors                             | Pass |
-| ------------------------------ | --------------------------------------------- | ---- |
+| Python File                  | Warnings / Errors                             | Pass |
+| ---------------------------- | -------------------------------------------   | ---- |
 | bag/contexts.py              |                                               | Pass |
 | bag/urls.py                  |                                               | Pass |
 | bag/views.py                 |                                               | Pass |
-| ---------------------------- | --------------------------------------------- | ---- |
+| ---------------------------- | -------------------------------------------   | ---- |
 | blog/admin.py                |                                               | Pass |
-| blog/admin.py                |                                               | Pass |
+| blog/apps.py                 |                                               | Pass |
 | blog/forms.py                |                                               | Pass |
 | blog/models.py               |                                               | Pass |
 | blog/urls.py                 |                                               | Pass |
-| blog/views.py                |  Operators                                    | Fail |
-| -----------------            | ---------------------------                   | ---- |
+| blog/views.py                |                                               | Pass |
+| -----------------            | -------------------------------------------   | ---- |
 | checkout/admin.py            |                                               | Pass |
 | checkout/apps.py             |                                               | Pass |
 | checkout/forms.py            |                                               | Pass |
-| checkout/models.py           | operators                                     | Fail |
+| checkout/models.py           | Line 55 and 56 line break after operators. Even though this is testing correctly in the terminal and is passing PEP 8 check the Python Guide suggests best practice to break before the operator.                                      | Pass |
 | Checkout/signals.py          |                                               | Pass |
 | Checkout/urls.py             |                                               | Pass |
-| Checkout/views.py            | operators and multiple statements on one line (colon)     | Fail |
-| Checkout/webhook_handlers.py | Lines 71, 73, 74, 104, 148, 149 too long      | Fail |
-| Checkout/webhooks.py         | Line 43 too long                              | Fail |
+| Checkout/views.py            | Line 129 multiple statements on one line, have checked agaisnt Boutique Code and this is correct for functionality       | Fail |
+| Checkout/webhook_handlers.py | Lines 73, 74 too long. Whilst the code itself is fine, using # noqa: E501 at the end of the line will stop linters picking up line length issues                         | Fail |
+| Checkout/webhooks.py         | Line 41 too long, using # noqa: E501 at the end of the line will stop linters picking up line length issues                                   | Fail |
 | -----------------            | ---------------------------                   | ---- |
 | Home/urls. py                |                                               | Pass |
 | Home/views.py                |                                               | Pass |
@@ -123,15 +123,15 @@ All python files have been passed through the Validator and shown the following 
 | Products/forms.py            |                                               | Pass |
 | Products/models.py           |                                               | Pass |
 | Products/urls.py             |                                               | Pass |
-| Products/views.py            | Lines 49, 92, 121 too long  operators                  | Fail |
-| Products/widgets.py             | Lines 9 too long | Fail |
-| -----------------              | ---------------------------                   | ---- |
-| Profiles/apps.py            |                                               | Pass |
-| Profiles/forms.py            |    line 33 too ling                   | Fail |
-| Profiles/models.py           |                                           | Pass |
+| Products/views.py            | Lines 49 is too long, using # noqa: E501 at the end of the line will stop linters picking up line length issues                              | Fail |
+| Products/widgets.py          |                                               | Pass |
+| -----------------            | ---------------------------                   | ---- |
+| Profiles/apps.py             |                                               | Pass |
+| Profiles/forms.py            |                                               | Pass |
+| Profiles/models.py           |                                               | Pass |
 | Profiles/urls.py             |                                               | Pass |
-| Profiles/views.py            | Line 22 too long                              | Pass |
-| -----------------              | ---------------------------                   | ---- |
+| Profiles/views.py            |                                               | Pass |
+| -----------------            | ---------------------------                   | ---- |
 
 When testing email, I tested in all auth using a test temporary link, that the user is directed too when email validation works. Once success confirmed this test was removed from the code. 
 

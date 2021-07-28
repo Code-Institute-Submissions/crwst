@@ -18,8 +18,8 @@ def BlogListView(request):
         if 'title' in request.GET:
             query = request.GET['title']
             if not query:
-                messages.error(request,
-                               "You didn't enter any search criteria!")
+                messages.error(request, ("You didn't enter any "
+                                         "search criteria!"))
                 return redirect(reverse('blogs'))
 
             queries = Q(blog_title__icontains=query) | Q(blog__icontains=query)
@@ -45,8 +45,8 @@ def BlogDetailView(request, _id):
     if request.method == "POST":
         form = CommentForm(request.POST)
         if not request.user:
-            messages.error(request,
-                           'Sorry, only registered shoppers can do that.')
+            messages.error(request, ('Sorry, only registered '
+                                     'shoppers can do that.'))
             return redirect(reverse('blogs'))
         if form.is_valid():
             comment_variable = Comment(author=request.user,
@@ -82,8 +82,8 @@ def add_blog(request):
             messages.success(request, 'Successfully added blog!')
             return redirect(reverse('blog', args=[blog.id]))
         else:
-            messages.error(request,
-                           'Failed to add blog. Please ensure form is valid.')
+            messages.error(request, ('Failed to add blog. Please ensure '
+                                     'form is valid.'))
     else:
         form = BlogForm()
 
@@ -110,9 +110,8 @@ def edit_blog(request, _id):
             messages.success(request, 'Successfully updated blog!')
             return redirect(reverse('blog', args=[blog.id]))
         else:
-            messages.error(request,
-                           'Failed to update blog.'
-                           + 'Please ensure form is valid.')
+            messages.error(request, ('Failed to update blog. Please ensure'
+                                     'form is valid.'))
     else:
         form = BlogForm(instance=blog)
         messages.info(request, f'You are editing blog {blog.blog_title}')
