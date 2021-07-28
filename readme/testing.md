@@ -406,8 +406,6 @@ If a payment and order has been successful, the user will see an order confirmat
 
 If the payment or order details are invalid the user is given that feedback and asked to check their details.
 
-The checkout success view is defensively programmed so that only the creator of the order or a superuser can see this. It is so the url cannot be bypassed and sensitive data isn't visible.
-
 This user story is achieved. 
 
 ![Order Confirmation](images/userstories/orderconf.JPG)
