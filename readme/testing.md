@@ -280,6 +280,8 @@ The user can navigate to their profile from the ‘My Account’ in the main men
 
 This is restricted so that only the logged in user can see their orders. This prevents users bypassing this authentication via the URL and breaching security by seeing a customers data. In addition I have allowed superusers to be able to see these orders for management purposes.
 
+Note that on their profile details (as well as those on checkout) there are no security checks on valid phone numbers, or for whether they match the input country. Whilst this is a local backery and in reality would likely restrict its shipments to a local area, this project has been built to show all countries to showcase skill. This kind of restriction is beyond my current skillset however is an excellent future feature to have should this be a real global business. It would ensure that users input their details correctly and prompt them with checks to ensure their phone number was valid for where they lived.
+
 This user story is achieved.
 
 ![Log in](images/userstories/profile.JPG)
@@ -406,7 +408,9 @@ If a payment and order has been successful, the user will see an order confirmat
 
 If the payment or order details are invalid the user is given that feedback and asked to check their details.
 
-This user story is achieved. 
+The checkout success url can be overriden with an exisiting order number. Whilst this is not secure, it is beyond my current ability to defend. More details on this in the debugging section.
+
+For now however, the user story is achieved. 
 
 ![Order Confirmation](images/userstories/orderconf.JPG)
 
@@ -594,7 +598,11 @@ When publishing a comment the URL not was not redirecting to the same blog page 
 
 * On further testing, published blog comments were not styled well for responsive screens (mobile and tablet). I put the comment code into a div and added bootstrap's margin left class and chose 3 (ml-3).
 
-* On testing URL bypassing and security I noted that users can bypass order confirmation and checkout success. This would mean they can find sensitive details of other users, and once viewed (if they have an account) the order attaches to their profile. To try to resolve this, I included @login_required to the functions, on testing this only stoped non-logged in users bypassing however logged in users can override other users.
+* On testing URL bypassing and security I noted that users can bypass the order confirmation and checkout success pages with existing order numbers that are not theirs. This would mean they can find sensitive details of other users, and once viewed (if they have an account) the order attaches to their profile. To try to resolve this, I included @login_required to the functions, on testing this only stoped non-logged in users bypassing however logged in users can override other users. To defend this further I added an if statement to check that the current user was the same as the user that created the order: 
+
+        if order.user_profile.user.username == request.user.username:
+
+Whilst this was successful in defending order history views, this failed when I tested it in the checkout success view. This is because within this view the order is saved to the users profile, so the test cannot be met before the order has been saved. This logic was tried throughout various steps in the view but did not work. Having checked online on stackoverflow and then reaching out to student support I found the likes of the checks that would be required for this to work (eg. checking the request.META['HTTP_REFERER'] to determine which page the user came from) is above my current level and not required right now. This unforuntely is then a known unresolved bug that would require addressing at a future release.
 
 * On testing as the sticky class is used on the footer, this is displayed mid page on templates with shorter content which doesnt look appealing. To resolve this I have added a class wholePage with style height: 100vh; which means the footer reamins on the bottom for these particular templates.
 
