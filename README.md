@@ -366,9 +366,11 @@ A user can navigate to their profile from the Account link on the main menu. The
 
 The Order history is shown, with links that take them from that order information to their original order confirmation/thank you page.
 
-It has been defensivly built so that only the creator of the order and the superuser can view an order for security reasons.
+It has been defensivly built so that only the creator of the order and the superuser can view an order history for security reasons.
 
 If a user has not made any orders, a message will be displayed stating the fact so that this portion of the page is not blank. It also enhances the user experience and may entice them to browse products and make a purchase.
+
+Note that on their profile details (as well as those on checkout) there are no security checks on valid phone numbers, or for whether they match the input country. Whilst this is a local backery and in reality would likely restrict its shipments to a local area, this project has been built to show all countries to showcase skill. This kind of restriction is beyond my current skillset however is an excellent future feature to have should this be a real global business. It would ensure that users input their details correctly and prompt them with checks to ensure their phone number was valid for where they lived.
 
 * All Blogs
 From the main navigation a user can navigate to the business’s blog page. There is a search function that a user can search for keywords which will bring results up if that is in the title or blog text. 
