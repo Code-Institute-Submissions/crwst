@@ -346,6 +346,8 @@ Only SuperUsers can see edit and delete links under product details.
 
 The bag shows the items in the shoppers cart with the ability to adjust the quantities and/or remove the item. They can see the subtotal and delivery. There is a large Secure Checkout button. If a user is not signed in, they are requested to before being taken to the checkout page.
 
+Mobile screen bag pages show a return to top button. This is because the secure checkout link is at the top therefore providing good UX. It is not included on tablet and larger screens as the checkout link is at the bottom of the order. 
+
 * Checkout
 
 Once clicked secure checkout registered users will be taken to the checkout page. Only registered users will be allowed to get to this, otherwise they will be redirected to signup/log in. 

@@ -609,6 +609,8 @@ Whilst this was successful in defending order history views, this failed when I 
 
 * On testing as the sticky class is used on the footer, this is displayed mid page on templates with shorter content which doesnt look appealing. To resolve this I have added a class wholePage with style height: 100vh; which means the footer reamins on the bottom for these particular templates (sign in, register, error templates). Note however this only works on pages with minimal content such as these. There is a bug on the tablet responsive screen of product detail and shopping cart template where if I use this class the content hangs over the footer and without (which is the present case) the footer is short of the bottom of the view port.
 
+* The return to top buttons on products, blog and mobile bag did not work when the button was over the footer. To resolve this I have added z-index: 5; to the btt button class. On testing, this now works when overlaying the footer. 
+
 [Back to Contents](#contents)
 
 [Return to README.md file](https://github.com/sophnagle/crwst/blob/master/README.md#testing-and-debugging)
