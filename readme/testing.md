@@ -116,6 +116,9 @@ All python files have been passed through the Validator and shown the following 
 | Checkout/webhook_handlers.py | Lines 73, 74 too long. Whilst the code itself is fine, using # noqa: E501 at the end of the line will stop linters picking up line length issues                         | Fail |
 | Checkout/webhooks.py         | Line 41 too long, using # noqa: E501 at the end of the line will stop linters picking up line length issues                                   | Fail |
 | -----------------            | ---------------------------                   | ---- |
+| crwst/settings.py            | 145, 148, 151, 154 Lines are too long. using # noqa: E501 at the end of the line will stop linters picking up line length issues                                                           | Pass |
+| crwst/urls.py                |                                               | Pass |
+| -----------------            | ---------------------------                   | ---- |
 | Home/urls. py                |                                               | Pass |
 | Home/views.py                |                                               | Pass |
 | -----------------            | ---------------------------                   | ---- |
@@ -123,7 +126,7 @@ All python files have been passed through the Validator and shown the following 
 | Products/forms.py            |                                               | Pass |
 | Products/models.py           |                                               | Pass |
 | Products/urls.py             |                                               | Pass |
-| Products/views.py            | Lines 49 is too long, using # noqa: E501 at the end of the line will stop linters picking up line length issues                              | Fail |
+| Products/views.py            | Line 49 is too long, using # noqa: E501 at the end of the line will stop linters picking up line length issues                              | Fail |
 | Products/widgets.py          |                                               | Pass |
 | -----------------            | ---------------------------                   | ---- |
 | Profiles/apps.py             |                                               | Pass |
@@ -158,7 +161,7 @@ Desktop:
 
 ### Accessibility Validation
 
-I tested the accessibility of the site using [Wave](https://wave.webaim.org/) which noted that the white logo didn’t have a strong enough contrast against the homepage background. This was addressed and the logo changed to a darker colour and retested, resulting in it passing. 
+I tested the accessibility of the site using [Wave](https://wave.webaim.org/) which noted that the white logo didn’t have a strong enough contrast against the homepage background. This was addressed and the logo changed to a darker colour and retested, resulting in it passing. This differs however on smaller screens due to background image so the logo colour changes accordingly. 
 
 ![Colour contrast test](images/contrastlogo.JPG)
 
@@ -604,7 +607,7 @@ When publishing a comment the URL not was not redirecting to the same blog page 
 
 Whilst this was successful in defending order history views, this failed when I tested it in the checkout success view. This is because within this view the order is saved to the users profile, so the test cannot be met before the order has been saved. This logic was tried throughout various steps in the view but did not work. Having checked online on stackoverflow and then reaching out to student support I found the likes of the checks that would be required for this to work (eg. checking the request.META['HTTP_REFERER'] to determine which page the user came from) is above my current level and not required right now. This unforuntely is then a known unresolved bug that would require addressing at a future release.
 
-* On testing as the sticky class is used on the footer, this is displayed mid page on templates with shorter content which doesnt look appealing. To resolve this I have added a class wholePage with style height: 100vh; which means the footer reamins on the bottom for these particular templates.
+* On testing as the sticky class is used on the footer, this is displayed mid page on templates with shorter content which doesnt look appealing. To resolve this I have added a class wholePage with style height: 100vh; which means the footer reamins on the bottom for these particular templates (sign in, register, error templates). Note however this only works on pages with minimal content such as these. There is a bug on the tablet responsive screen of product detail and shopping cart template where if I use this class the content hangs over the footer and without (which is the present case) the footer is short of the bottom of the view port.
 
 [Back to Contents](#contents)
 
