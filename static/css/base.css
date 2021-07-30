@@ -301,6 +301,10 @@ footer a:hover {
     height: 100vh;
 }
 
+.pageHeight {
+    min-height: 80vh;
+}
+
 /*............................ Media Queries */
 
 /* Slighly larger container on extra large screens */
