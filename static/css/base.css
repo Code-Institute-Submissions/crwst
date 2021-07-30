@@ -108,6 +108,8 @@ input[name='q']::placeholder {
     position: fixed;
     bottom: 10px;
     right: 10px;
+    /* z index given here to ensure the button works over footer */
+    z-index: 5; 
 }
 
 .btt-link,
